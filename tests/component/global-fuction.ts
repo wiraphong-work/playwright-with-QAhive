@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page , expect } from '@playwright/test';
 
 
 export class MainPage {
@@ -14,4 +14,13 @@ export class MainPage {
         await this.page.getByText("submit").click();
       }
     }
+
 }  
+
+export class ApiTesting{
+  async checkKeyOfJson( responseBody: JSON ,arr: any[]) {
+    await arr.forEach((val)=>{
+     expect(responseBody).toHaveProperty(val);
+     })
+ }
+}
