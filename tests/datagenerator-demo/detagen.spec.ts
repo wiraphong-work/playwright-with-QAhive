@@ -55,10 +55,11 @@ test('Generate all', async ({ page }) => {
     const rowTitle = await page
         .locator('.MuiDataGrid-columnHeaderTitle')
         .allTextContents();
+    await expect(data_check.map((val)=> val.name)).toEqual(expect.arrayContaining(rowTitle));
 
-    await data_check.map(async(val,index)=>{
-        await expect(val.name).toEqual(rowTitle[index]);
-    })
+    // await data_check.map(async(val,index)=>{
+    //     await expect(val.name).toEqual(rowTitle[index]);
+    // })
 });
 
 // test('Generate some', async ({ page }) => {
